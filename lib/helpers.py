@@ -26,6 +26,7 @@ def select_team():
             team = Team.find_by_id(id_)
             if team:
                 print(f'Selected Team: {team.city} {team.name}')
+                return team
             else:
                 print("Team not found.")
         else:
@@ -60,5 +61,6 @@ def update_team(team):
     team.name = new_name
     team.city = new_city
     team.salary_cap = new_salary_cap
+    team.update()
 
     print(f'Team updated to {team.city} {team.name}')
