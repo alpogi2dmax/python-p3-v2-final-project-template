@@ -52,7 +52,6 @@ def create_team():
         team = Team.create(name, city)
         print()
         print(f'{team.city} {team.name} has been added!')
-        print()
         list_teams()
     except Exception as exc:
         print('Error creating team: ', exc)
