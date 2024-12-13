@@ -95,3 +95,20 @@ def list_players(team):
     print()
     print("****************************************")
     print()
+
+def draft_player(team):
+    print()
+    print('Enter Player Details')
+    print()
+    name = input("Enter player's name: ")
+    position = input("Enter player's position: ")
+    salary = int(input("Enter player's salary: "))
+
+    try:
+        player = Player.create(name, position, salary, team.id)
+        print()
+        print(f'{player.name} is added to the {team.name} roster')
+        print()
+        list_players()
+    except Exception as exc:
+        print("Error drafting player: ", exc)
