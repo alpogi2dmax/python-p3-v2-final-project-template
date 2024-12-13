@@ -73,6 +73,10 @@ def update_team(team):
 
     print(f'Team updated to {team.city} {team.name}')
 
+def delete_team(team):
+    team.delete()
+    print(f'{team.city} {team.name} has been deleted')
+
 def list_players(team):
     players = Player.get_all()
     print()

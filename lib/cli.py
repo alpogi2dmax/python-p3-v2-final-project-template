@@ -6,7 +6,8 @@ from helpers import (
     select_team,
     create_team,
     update_team,
-    list_players
+    list_players,
+    delete_team
 )
 
 
@@ -56,6 +57,9 @@ def team(selected_team):
         elif choice == "1":
             update_team(selected_team)
         elif choice == "2":
+            delete_team(selected_team)
+            break
+        elif choice == "3":
             list_players(selected_team)
         else:
             print("Invalid choice")
@@ -65,7 +69,8 @@ def team_menu():
     print()
     print('0: Go Back to main menu')
     print('1: Update team')
-    print('2: List players')
+    print('2: Delete team')
+    print('3: List players')
     print()
 
 if __name__ == "__main__":
