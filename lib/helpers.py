@@ -1,4 +1,5 @@
 from models.team import Team
+from models.player import Player
 
 def exit_program():
     print("Goodbye!")
@@ -64,3 +65,8 @@ def update_team(team):
     team.update()
 
     print(f'Team updated to {team.city} {team.name}')
+
+def list_players(team):
+    players = Player.get_all()
+    for i, player in enumerate(players):
+        print(f'{i+1}: {player.name}')

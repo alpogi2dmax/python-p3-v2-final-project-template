@@ -18,9 +18,9 @@ def reset_database():
     kings = Team.create('Kings', 'Sacramento', 150000000)
     rockets = Team.create('Rockets', 'Houston', 150000000)
     nets = Team.create('Nets', 'Brooklyn', 150000000)
-    Player.create('Steph Curry', 'Point Guard', 40000000)
-    Player.create('Draymond Green', 'Power Forward', 20000000)
-    Player.create('Andrew Wiggins', 'Small Forward', 15000000)
+    Player.create('Steph Curry', 'Point Guard', 40000000, warriors.id)
+    Player.create('Draymond Green', 'Power Forward', 20000000, warriors.id)
+    Player.create('Andrew Wiggins', 'Small Forward', 15000000, warriors.id)
 
 reset_database()
 ipdb.set_trace()
