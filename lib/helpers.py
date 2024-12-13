@@ -77,7 +77,6 @@ def delete_team(team):
     team.delete()
     print()
     print(f'{team.city} {team.name} has been deleted')
-    print()
     list_teams()
 
 def list_players(team):
@@ -87,8 +86,11 @@ def list_players(team):
     print()
     print(f'{team.city} {team.name} Roster')
     print()
-    for i, player in enumerate(players):
-        if player.team_id == team.id:
+    roster = [player for player in players if player.team_id == team.id]
+    if len(roster) == 0:
+        print(f"There are no players in the {team.name}'s roster. Please add players.")
+    else:
+        for i, player in enumerate(roster):
             print(f'{i+1}: {player.name}')
     print()
     print("****************************************")

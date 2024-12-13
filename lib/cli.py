@@ -40,6 +40,8 @@ def greetings():
 
 def menu():
     print()
+    print('Main Menu')
+    print()
     print("Please select an option:")
     print()
     print("0. Exit the program")
@@ -65,6 +67,8 @@ def team(selected_team):
             print("Invalid choice")
 
 def team_menu():
+    print('Team Menu')
+    print()
     print('Please select an option')
     print()
     print('0: Go Back to main menu')
