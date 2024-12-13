@@ -11,6 +11,7 @@ def list_teams():
     print("****************************************")
     print()
     print('NBA Teams')
+    print()
     for i, team in enumerate(teams):
         print(f'{i+1}: {team.city} {team.name}')
     print()
@@ -19,13 +20,15 @@ def list_teams():
 def select_team():
     teams = Team.get_all()
     list_teams()
-
+    print()
     try:
         id_ = int(input("Enter the team's number: "))
+        print()
         if 1 <= id_ <= len(teams):
             team = Team.find_by_id(id_)
             if team:
-                print(f'Selected Team: {team.city} {team.name}')
+                print(f'You have the selected the {team.city} {team.name}')
+                print()
                 return team
             else:
                 print("Team not found.")
@@ -45,7 +48,6 @@ def create_team():
     city = input("Enter the team's city: ")
     print()
     print("****************************************")
-
     try:
         team = Team.create(name, city)
         print()

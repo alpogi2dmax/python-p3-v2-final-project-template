@@ -28,6 +28,7 @@ def main():
             print("Invalid choice")
 
 def greetings():
+    print()
     print("****************************************")
     print()
     print("Welcome to the NBA Commissioner Database")
@@ -39,6 +40,7 @@ def greetings():
 def menu():
     print()
     print("Please select an option:")
+    print()
     print("0. Exit the program")
     print("1. List all teams")
     print('2. Select team')
@@ -60,6 +62,7 @@ def team(selected_team):
 
 def team_menu():
     print('Please select an option')
+    print()
     print('0: Go Back to main menu')
     print('1: Update team')
     print('2: List players')
