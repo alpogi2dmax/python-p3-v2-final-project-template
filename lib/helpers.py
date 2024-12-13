@@ -36,13 +36,21 @@ def select_team():
     return None
 
 def create_team():
+    print()
+    print("****************************************")
+    print()
+    print("Create a new team")
+    print()
     name = input("Enter the team's name: ")
     city = input("Enter the team's city: ")
-    salary_cap = int(input("Enter the team's salary cap: "))
+    print()
+    print("****************************************")
 
     try:
-        team = Team.create(name, city, salary_cap)
-        print(f'{team.city} {team.name} have been added!')
+        team = Team.create(name, city)
+        print()
+        print(f'{team.city} {team.name} has been added!')
+        print()
         list_teams()
     except Exception as exc:
         print('Error creating team: ', exc)
