@@ -5,11 +5,11 @@ class Team:
 
     all = {}
 
-    def __init__(self, name, city, salary_cap, id =None):
+    def __init__(self, name, city, id =None):
         self.id = id
         self.name = name
         self.city = city
-        self.salary_cap = salary_cap
+        self.salary_cap = 200000000
     
     def __repr__(self):
         return f"<Team {self.id}: {self.name}, {self.city}, {self.salary_cap}>"
@@ -35,17 +35,6 @@ class Team:
             self._city = city
         else:
             raise ValueError('City must be a non-empty string.')
-        
-    @property
-    def salary_cap(self):
-        return self._salary_cap
-    
-    @salary_cap.setter
-    def salary_cap(self, salary_cap):
-        if isinstance(salary_cap, int) and 80000000 <= salary_cap <= 150000000:
-            self._salary_cap = salary_cap
-        else:
-            raise ValueError('Salary cap must be an integer and between 80 million and 150 million')
         
     @classmethod
     def create_table(cls):
@@ -74,20 +63,20 @@ class Team:
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-            INSERT INTO teams (name, city, salary_cap)
-            VALUES (?, ?, ?)
+            INSERT INTO teams (name, city)
+            VALUES (?, ?)
         """
 
-        CURSOR.execute(sql, (self.name, self.city, self.salary_cap))
+        CURSOR.execute(sql, (self.name, self.city))
         CONN.commit()
 
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
     
     @classmethod
-    def create(cls, name, city, salary_cap):
-        """ Initialize a new Team instance and ssave the object to the database """
-        team = cls(name, city, salary_cap)
+    def create(cls, name, city):
+        """ Initialize a new Team instance and save the object to the database """
+        team = cls(name, city)
         team.save()
         return team
     
@@ -95,10 +84,10 @@ class Team:
         """Update the table row corresponding to the current Team instance."""
         sql = """
             UPDATE teams
-            SET name = ?, city = ?, salary_cap = ?
+            SET name = ?, city = ?
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.name, self.city, self.salary_cap, self.id))
+        CURSOR.execute(sql, (self.name, self.city, self.id))
         CONN.commit()
 
     def delete(self):

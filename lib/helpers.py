@@ -15,7 +15,6 @@ def list_teams():
         print(f'{i+1}: {team.city} {team.name}')
     print()
     print("****************************************")
-    print()
 
 def select_team():
     teams = Team.get_all()
@@ -61,7 +60,6 @@ def update_team(team):
     # Update the team with new data if provided
     team.name = new_name
     team.city = new_city
-    team.salary_cap = new_salary_cap
     team.update()
 
     print(f'Team updated to {team.city} {team.name}')
