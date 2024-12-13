@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-# lib/debug.py
 
 from models.__init__ import CONN, CURSOR
 from models.team import Team
 from models.player import Player
-import ipdb
 
-def reset_database():
+def seed_database():
     Player.drop_table()
     Team.drop_table()
     Team.create_table()
@@ -22,5 +20,6 @@ def reset_database():
     Player.create('Draymond Green', 'Power Forward', 20000000)
     Player.create('Andrew Wiggins', 'Small Forward', 15000000)
 
-reset_database()
-ipdb.set_trace()
+
+seed_database()
+print("Seeded database")
