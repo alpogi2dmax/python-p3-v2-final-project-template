@@ -8,13 +8,13 @@ def exit_program():
 def list_teams():
     teams = Team.get_all()
     print()
-    print('**************')
+    print("****************************************")
     print()
     print('NBA Teams')
     for i, team in enumerate(teams):
         print(f'{i+1}: {team.city} {team.name}')
     print()
-    print('**************')
+    print("****************************************")
     print()
 
 def select_team():
@@ -68,5 +68,14 @@ def update_team(team):
 
 def list_players(team):
     players = Player.get_all()
+    print()
+    print("****************************************")
+    print()
+    print(f'{team.city} {team.name} Roster')
+    print()
     for i, player in enumerate(players):
-        print(f'{i+1}: {player.name}')
+        if player.team_id == team.id:
+            print(f'{i+1}: {player.name}')
+    print()
+    print("****************************************")
+    print()

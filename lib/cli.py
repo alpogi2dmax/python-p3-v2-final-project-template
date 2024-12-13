@@ -13,7 +13,7 @@ from helpers import (
 def main():
     while True:
         menu()
-        choice = input("> ")
+        choice = input("Enter Option: ")
         if choice == "0":
             exit_program()
         elif choice == "1":
@@ -27,18 +27,28 @@ def main():
         else:
             print("Invalid choice")
 
+def greetings():
+    print("****************************************")
+    print()
+    print("Welcome to the NBA Commissioner Database")
+    print("As NBA Commissioner, you are tasked to maintain the NBA Teams and Roster")
+    print()
+    print("****************************************")
+
 
 def menu():
+    print()
     print("Please select an option:")
     print("0. Exit the program")
     print("1. List all teams")
     print('2. Select team')
     print("3. Create a team")
+    print()
 
 def team(selected_team):
     while True:
         team_menu()
-        choice = input("> ")
+        choice = input("Enter Option: ")
         if choice == "0":
             break
         elif choice == "1":
@@ -53,6 +63,8 @@ def team_menu():
     print('0: Go Back to main menu')
     print('1: Update team')
     print('2: List players')
+    print()
 
 if __name__ == "__main__":
+    greetings()
     main()
