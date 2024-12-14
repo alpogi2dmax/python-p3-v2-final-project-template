@@ -136,6 +136,8 @@ def select_player(team):
     return None
 
 def draft_player(team):
+    players = Player.get_all()
+    team_salaries = sum([player.salary for player in players if player.team_id == team.id])
     print()
     print('Enter Player Details')
     print()
@@ -144,10 +146,13 @@ def draft_player(team):
     salary = int(input("Enter player's salary: "))
 
     try:
-        player = Player.create(name, position, salary, team.id)
-        print()
-        print(f'{player.name} is added to the {team.name} roster')
-        list_players(team)
+        if team_salaries + salary > team.salary_cap:
+            print('Salaries will exceed salary cap. Please review salary allocation.')
+        else:
+            player = Player.create(name, position, salary, team.id)
+            print()
+            print(f'{player.name} is added to the {team.name} roster')
+            list_players(team)
     except Exception as exc:
         print("Error drafting player: ", exc)
 
