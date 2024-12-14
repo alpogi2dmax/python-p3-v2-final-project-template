@@ -55,7 +55,7 @@ def menu():
 
 def team(selected_team):
     while True:
-        team_menu()
+        team_menu(selected_team)
         choice = input("Enter Option: ")
         if choice == "0":
             break
@@ -77,8 +77,8 @@ def team(selected_team):
             print("Invalid choice")
             print()
 
-def team_menu():
-    print('Team Menu')
+def team_menu(selected_team):
+    print(f'{selected_team.name} Team Menu')
     print('***********************')
     print('Please select an option')
     print()
@@ -92,17 +92,17 @@ def team_menu():
 
 def player(selected_player):
     while True:
-        player_menu()
+        player_menu(selected_player)
         choice = input("Enter Option: ")
         if choice == "0":
             break
 
-def player_menu():
-    print('Player Menu')
+def player_menu(selected_player):
+    print(f'{selected_player.name} Player Menu')
     print('***********************')
     print('Please select an option')
     print()
-    print('0: Go Back to main menu')
+    print('0: Go Back to team menu')
     print()
 
 if __name__ == "__main__":
