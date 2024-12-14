@@ -8,14 +8,14 @@ def exit_program():
 def list_teams():
     teams = Team.get_all()
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print('NBA Teams')
     print()
     for i, team in enumerate(teams):
         print(f'{i+1}: {team.city} {team.name}')
     print()
-    print("****************************************")
+    print("************************************************************************")
 
 def select_team():
     teams = Team.get_all()
@@ -40,14 +40,14 @@ def select_team():
 
 def create_team():
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print("Create a new team")
     print()
     name = input("Enter the team's name: ")
     city = input("Enter the team's city: ")
     print()
-    print("****************************************")
+    print("************************************************************************")
     try:
         team = Team.create(name, city)
         print()
@@ -59,7 +59,7 @@ def create_team():
 def team_details(team):
     players = Player.get_all()
     team_salaries = sum([player.salary for player in players if player.team_id == team.id])
-    print("****************************************")
+    print("************************************************************************")
     print()
     print('Team Details')
     print()
@@ -68,7 +68,7 @@ def team_details(team):
     print(f'Team Salary Cap: ${team.salary_cap:,d}')
     print(f'Team Remaining Salary Allocation: ${(team.salary_cap - team_salaries):,d}')
     print()
-    print("****************************************")
+    print("************************************************************************")
 
 
 def update_team(team):
@@ -88,11 +88,11 @@ def update_team(team):
     team.update()
 
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print(f'Team updated to {team.city} {team.name}')
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
 
 def delete_team(team):
@@ -104,7 +104,7 @@ def delete_team(team):
 def list_players(team):
     players = Player.get_all()
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print(f'{team.city} {team.name} Roster')
     print()
@@ -115,7 +115,7 @@ def list_players(team):
         for i, player in enumerate(roster):
             print(f'{i+1}: {player.name}')
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
 
 def select_player(team):
@@ -159,7 +159,7 @@ def draft_player(team):
         print("Error drafting player: ", exc)
 
 def player_details(player):
-    print("****************************************")
+    print("************************************************************************")
     print()
     print('Player Details')
     print()
@@ -167,7 +167,7 @@ def player_details(player):
     print(f'Position: {player.position}')
     print(f'Salary: ${player.salary:,d}')
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
 
 def update_player(player):
@@ -188,18 +188,18 @@ def update_player(player):
     player.position = new_position or player.position
     player.update()
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print(f'Updated {player.name} details')
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print('Player Details')
     print()
     print(f'Name: {player.name}')
     print(f'Position: {player.position}')
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
 
 def negotiate_salary(player):
@@ -227,15 +227,15 @@ def negotiate_salary(player):
         player.salary = int(new_salary) if new_salary != '' else player.salary
         player.update()
         print()
-        print("****************************************")
+        print("************************************************************************")
         print()
         print(f"Negotiated {player.name}'s details")
         print()
-        print("****************************************")
+        print("************************************************************************")
         print()
         print(f"{player.name}'s new salary: ${player.salary:,d}")
         print()
-        print("****************************************")
+        print("************************************************************************")
         print()
 
 
@@ -259,7 +259,7 @@ def trade_player(player):
         player.team_id = int(new_team_id)
         player.update()
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print(f'Traded {player.name} to the {teams[int(new_team_id)-1].name}')
     print()
