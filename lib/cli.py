@@ -5,6 +5,7 @@ from helpers import (
     list_teams,
     select_team,
     create_team,
+    team_details,
     update_team,
     list_players,
     delete_team,
@@ -60,17 +61,19 @@ def team(selected_team):
         if choice == "0":
             break
         elif choice == "1":
-            update_team(selected_team)
+            team_details(selected_team)
         elif choice == "2":
+            update_team(selected_team)
+        elif choice == "3":
             delete_team(selected_team)
             break
-        elif choice == "3":
-            list_players(selected_team)
         elif choice == "4":
+            list_players(selected_team)
+        elif choice == "5":
             selected_player = select_player(selected_team)
             if selected_player:
                 player(selected_player)
-        elif choice == "5":
+        elif choice == "6":
             draft_player(selected_team)
         else:
             print()
@@ -83,11 +86,12 @@ def team_menu(selected_team):
     print('Please select an option')
     print()
     print('0: Go Back to main menu')
-    print('1: Update team')
-    print('2: Delete team')
-    print('3: List players')
-    print('4: Select player')
-    print('5: Draft player')
+    print('1: Team details')
+    print('2: Update team')
+    print('3: Delete team')
+    print('4: List players')
+    print('5: Select player')
+    print('6: Draft player')
     print()
 
 def player(selected_player):

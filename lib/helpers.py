@@ -56,6 +56,19 @@ def create_team():
     except Exception as exc:
         print('Error creating team: ', exc)
 
+def team_details(team):
+    print("****************************************")
+    print()
+    print('Team Details')
+    print()
+    print(f'Team Name: {team.name}')
+    print(f'Team City: {team.city}')
+    print(f'Team Salary Cap: {team.salary_cap}')
+    print(f'Team Remaining Salary Allocation: {team.salary_cap}')
+    print()
+    print("****************************************")
+
+
 def update_team(team):
     if not team:
         print("No team selected for update.")
