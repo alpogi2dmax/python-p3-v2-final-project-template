@@ -177,7 +177,7 @@ def update_player(player):
     player.name = new_name or player.name
     player.position = new_position or player.position
     player.salary = int(new_salary) if new_salary != '' else player.salary
-    player.id = player.id
+    player.team_id = player.team_id
     player.update()
     print()
     print("****************************************")
@@ -195,4 +195,29 @@ def update_player(player):
     print("****************************************")
     print()
 
+def trade_player(player):
+    if not player:
+        print("No player selected for update.")
+        return
+    
+    print()
+    print(f'Trading {player.name}')
+    print()
+    list_teams()
+    new_team_id = input('Enter new team number: ')
 
+    # Update the player with new data if provided
+    teams = Team.get_all()
+    if 1 <= int(new_team_id) <= len(teams):
+        player.name = player.name
+        player.position = player.position
+        player.salary = player.salary
+        player.team_id = int(new_team_id)
+        player.update()
+    else:
+        print('Invalid Team number. Choose a valid number.')
+    print()
+    print("****************************************")
+    print()
+    print(f'Traded {player.name} to {teams[int(new_team_id)-1].name}')
+    print()
