@@ -5,11 +5,11 @@ class Team:
 
     all = {}
 
-    def __init__(self, name, city, id =None):
+    def __init__(self, name, city, salary_cap = 200000000, id =None):
         self.id = id
         self.name = name
         self.city = city
-        self.salary_cap = 200000000
+        self.salary_cap = salary_cap
     
     def __repr__(self):
         return f"<Team {self.id}: {self.name}, {self.city}, {self.salary_cap}>"
@@ -74,9 +74,9 @@ class Team:
         type(self).all[self.id] = self
     
     @classmethod
-    def create(cls, name, city, salary_cap):
+    def create(cls, name, city):
         """ Initialize a new Team instance and save the object to the database """
-        team = cls(name, city, salary_cap)
+        team = cls(name, city)
         team.save()
         return team
     

@@ -63,8 +63,8 @@ def team_details(team):
     print()
     print(f'Team Name: {team.name}')
     print(f'Team City: {team.city}')
-    print(f'Team Salary Cap: {team.salary_cap}')
-    print(f'Team Remaining Salary Allocation: {team.salary_cap}')
+    print(f'Team Salary Cap: ${team.salary_cap:,d}')
+    print(f'Team Remaining Salary Allocation: ${team.salary_cap:,d}')
     print()
     print("****************************************")
 
