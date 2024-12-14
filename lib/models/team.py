@@ -63,20 +63,20 @@ class Team:
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-            INSERT INTO teams (name, city)
-            VALUES (?, ?)
+            INSERT INTO teams (name, city, salary_cap)
+            VALUES (?, ?, ?)
         """
 
-        CURSOR.execute(sql, (self.name, self.city))
+        CURSOR.execute(sql, (self.name, self.city, self.salary_cap))
         CONN.commit()
 
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
     
     @classmethod
-    def create(cls, name, city):
+    def create(cls, name, city, salary_cap):
         """ Initialize a new Team instance and save the object to the database """
-        team = cls(name, city)
+        team = cls(name, city, salary_cap)
         team.save()
         return team
     
