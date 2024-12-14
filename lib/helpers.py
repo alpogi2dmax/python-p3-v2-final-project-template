@@ -144,3 +144,14 @@ def draft_player(team):
         list_players(team)
     except Exception as exc:
         print("Error drafting player: ", exc)
+
+def player_details(player):
+    print("****************************************")
+    print()
+    print('Player Details')
+    print()
+    print(f'Name: {player.name}')
+    print(f'Position: {player.position}')
+    print(f'Salary: ${player.salary:,d}')
+    print()
+    print("****************************************")

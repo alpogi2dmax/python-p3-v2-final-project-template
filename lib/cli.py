@@ -10,7 +10,8 @@ from helpers import (
     list_players,
     delete_team,
     select_player,
-    draft_player
+    draft_player,
+    player_details
 )
 
 def main():
@@ -82,7 +83,7 @@ def team(selected_team):
 
 def team_menu(selected_team):
     print(f'{selected_team.name} Team Menu')
-    print('***********************')
+    print("****************************************")
     print('Please select an option')
     print()
     print('0: Go Back to main menu')
@@ -100,13 +101,20 @@ def player(selected_player):
         choice = input("Enter Option: ")
         if choice == "0":
             break
+        elif choice == "1":
+            player_details(selected_player)
+        else:
+            print()
+            print("Invalid choice")
+            print()
 
 def player_menu(selected_player):
     print(f'{selected_player.name} Player Menu')
-    print('***********************')
+    print("****************************************")
     print('Please select an option')
     print()
     print('0: Go Back to team menu')
+    print('1: Player details')
     print()
 
 if __name__ == "__main__":
