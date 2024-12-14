@@ -159,3 +159,22 @@ def player_details(player):
     print(f'Salary: ${player.salary:,d}')
     print()
     print("****************************************")
+
+def update_player(player):
+    if not player:
+        print("No player selected for update.")
+        return
+    
+    print()
+    print(f'Updating {player.name} details')
+    print()
+    new_name = input("Enter new name: ")
+    new_position = input("Enter new position: ")
+    new_salary = int(input("Enter new salary: "))
+
+    # Update the player with new data if provided
+    player.name = new_name or player.name
+    player.position = new_position or player.position
+    player.salary = new_salary or player.salary
+    player.id = player.id
+    player.update()

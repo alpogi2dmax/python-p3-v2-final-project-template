@@ -11,7 +11,8 @@ from helpers import (
     delete_team,
     select_player,
     draft_player,
-    player_details
+    player_details,
+    update_player
 )
 
 def main():
@@ -103,6 +104,8 @@ def player(selected_player):
             break
         elif choice == "1":
             player_details(selected_player)
+        elif choice == "2":
+            update_player(selected_player)
         else:
             print()
             print("Invalid choice")
@@ -115,6 +118,7 @@ def player_menu(selected_player):
     print()
     print('0: Go Back to team menu')
     print('1: Player details')
+    print('2: Update player')
     print()
 
 if __name__ == "__main__":
