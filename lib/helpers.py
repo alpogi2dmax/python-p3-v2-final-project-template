@@ -147,7 +147,9 @@ def draft_player(team):
 
     try:
         if team_salaries + salary > team.salary_cap:
+            print()
             print('Salaries will exceed salary cap. Please review salary allocation.')
+            print()
         else:
             player = Player.create(name, position, salary, team.id)
             print()
@@ -176,14 +178,14 @@ def update_player(player):
     print()
     print(f'Updating {player.name} details')
     print()
+    player_details(player)
+
     new_name = input("Enter new name: ")
     new_position = input("Enter new position: ")
-    new_salary = input("Enter new salary: ")
 
     # Update the player with new data if provided
     player.name = new_name or player.name
     player.position = new_position or player.position
-    player.salary = int(new_salary) if new_salary != '' else player.salary
     player.update()
     print()
     print("****************************************")
@@ -196,10 +198,45 @@ def update_player(player):
     print()
     print(f'Name: {player.name}')
     print(f'Position: {player.position}')
-    print(f'Salary: ${player.salary:,d}')
     print()
     print("****************************************")
     print()
+
+def negotiate_salary(player):
+    rosters = Player.get_all()
+    team_salaries = sum([roster.salary for roster in rosters if roster.team_id == player.team_id])
+    if not player:
+        print("No player selected for update.")
+        return
+    
+    print()
+    print(f"Negotiating {player.name}'s salary")
+    print()
+    print('Current Salary: {player.salary}')
+
+    new_salary = input("Enter proposed salary: ")
+
+    # Update the player with new data if provided
+    if team_salaries + new_salary > Team.get_all()[player.team_id -1]:
+        print('Salaries will exceed salary cap. Please review salary allocation.')
+    else:
+        player.salary = int(new_salary) if new_salary != '' else player.salary
+        player.update()
+        print()
+        print("****************************************")
+        print()
+        print(f'Updated {player.name} details')
+        print()
+        print("****************************************")
+        print()
+        print('Player Details')
+        print()
+        print(f'Name: {player.name}')
+        print(f'Position: {player.position}')
+        print()
+        print("****************************************")
+        print()
+
 
 def trade_player(player):
     if not player:

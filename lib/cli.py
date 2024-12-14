@@ -14,6 +14,7 @@ from helpers import (
     player_details,
     update_player,
     trade_player,
+    negotiate_salary,
     waive_player
 )
 
@@ -111,7 +112,10 @@ def player(selected_player):
         elif choice == "3":
             trade_player(selected_player)
             break
-        elif choice == "4":
+        elif choice == "5":
+            negotiate_salary(selected_player)
+            break
+        elif choice == "6":
             waive_player(selected_player)
             break
         else:
@@ -128,7 +132,8 @@ def player_menu(selected_player):
     print('1: Player details')
     print('2: Update player')
     print('3: Trade player')
-    print('4: Waive player')
+    print('4: Negotiate salary')
+    print('5: Waive player')
     print()
 
 if __name__ == "__main__":
