@@ -208,16 +208,14 @@ def trade_player(player):
 
     # Update the player with new data if provided
     teams = Team.get_all()
-    if 1 <= int(new_team_id) <= len(teams):
-        player.name = player.name
-        player.position = player.position
-        player.salary = player.salary
+    if int(new_team_id) > len(teams):
+        print('Invalid Team number. Choose a valid number.')
+        return
+    elif 1 <= int(new_team_id) <= len(teams):
         player.team_id = int(new_team_id)
         player.update()
-    else:
-        print('Invalid Team number. Choose a valid number.')
     print()
     print("****************************************")
     print()
-    print(f'Traded {player.name} to {teams[int(new_team_id)-1].name}')
+    print(f'Traded {player.name} to the {teams[int(new_team_id)-1].name}')
     print()
