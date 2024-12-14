@@ -57,6 +57,8 @@ def create_team():
         print('Error creating team: ', exc)
 
 def team_details(team):
+    players = Player.get_all()
+    team_salaries = sum([player.salary for player in players if player.team_id == team.id])
     print("****************************************")
     print()
     print('Team Details')
@@ -64,7 +66,7 @@ def team_details(team):
     print(f'Team Name: {team.name}')
     print(f'Team City: {team.city}')
     print(f'Team Salary Cap: ${team.salary_cap:,d}')
-    print(f'Team Remaining Salary Allocation: ${team.salary_cap:,d}')
+    print(f'Team Remaining Salary Allocation: ${(team.salary_cap - team_salaries):,d}')
     print()
     print("****************************************")
 
