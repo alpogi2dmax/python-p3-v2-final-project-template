@@ -159,6 +159,7 @@ def player_details(player):
     print(f'Salary: ${player.salary:,d}')
     print()
     print("****************************************")
+    print()
 
 def update_player(player):
     if not player:
@@ -170,11 +171,28 @@ def update_player(player):
     print()
     new_name = input("Enter new name: ")
     new_position = input("Enter new position: ")
-    new_salary = int(input("Enter new salary: "))
+    new_salary = input("Enter new salary: ")
 
     # Update the player with new data if provided
     player.name = new_name or player.name
     player.position = new_position or player.position
-    player.salary = new_salary or player.salary
+    player.salary = int(new_salary) if new_salary != '' else player.salary
     player.id = player.id
     player.update()
+    print()
+    print("****************************************")
+    print()
+    print(f'Updated {player.name} details')
+    print()
+    print("****************************************")
+    print()
+    print('Player Details')
+    print()
+    print(f'Name: {player.name}')
+    print(f'Position: {player.position}')
+    print(f'Salary: ${player.salary:,d}')
+    print()
+    print("****************************************")
+    print()
+
+
