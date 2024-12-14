@@ -96,6 +96,26 @@ def list_players(team):
     print("****************************************")
     print()
 
+def select_player(team):
+    players = Player.get_all()
+    list_players(team)
+    try:
+        id_ = int(input("Enter the player's number: "))
+        print()
+        if 1 <= id_ <= len(players):
+            player = Player.find_by_id(id_)
+            if player:
+                print(f'You have the selected {player.name}')
+                print()
+                return player
+            else:
+                print("Player not found.")
+        else:
+            print("Invalid player number.")
+    except ValueError:
+        print("Please enter a valid number.")
+    return None
+
 def draft_player(team):
     print()
     print('Enter Player Details')
@@ -108,7 +128,6 @@ def draft_player(team):
         player = Player.create(name, position, salary, team.id)
         print()
         print(f'{player.name} is added to the {team.name} roster')
-        print()
-        list_players()
+        list_players(team)
     except Exception as exc:
         print("Error drafting player: ", exc)

@@ -8,6 +8,7 @@ from helpers import (
     update_team,
     list_players,
     delete_team,
+    select_player,
     draft_player
 )
 
@@ -26,7 +27,9 @@ def main():
         elif choice == "3":
             create_team()
         else:
+            print()
             print("Invalid choice")
+            print()
 
 def greetings():
     print()
@@ -64,9 +67,15 @@ def team(selected_team):
         elif choice == "3":
             list_players(selected_team)
         elif choice == "4":
+            selected_player = select_player(selected_team)
+            if selected_player:
+                player(selected_player)
+        elif choice == "5":
             draft_player(selected_team)
         else:
+            print()
             print("Invalid choice")
+            print()
 
 def team_menu():
     print('Team Menu')
@@ -77,7 +86,23 @@ def team_menu():
     print('1: Update team')
     print('2: Delete team')
     print('3: List players')
-    print('4: Draft player')
+    print('4: Select player')
+    print('5: Draft player')
+    print()
+
+def player(selected_player):
+    while True:
+        player_menu()
+        choice = input("Enter Option: ")
+        if choice == "0":
+            break
+
+def player_menu():
+    print('Player Menu')
+    print('***********************')
+    print('Please select an option')
+    print()
+    print('0: Go Back to main menu')
     print()
 
 if __name__ == "__main__":
