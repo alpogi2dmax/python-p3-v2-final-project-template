@@ -102,10 +102,16 @@ def update_team(team):
     print()
 
 def delete_team(team):
-    roster = [player for player in Player.get_all() if player.team_id == team.id]
+    players = Player.get_all()
+    roster = [player for player in players if player.team_id == team.id]
     if len(roster) > 0:
-        print('Your team still has players in your roster. Please empty your roster before deleting.')
-    elif len(roster) == 0:
+        print()
+        print("************************************************************************")
+        print()
+        print('Roster must be empty. Please waive or trade players before deleting')
+        print()
+        print("************************************************************************")
+    else:
         team.delete()
         print()
         print(f'{team.city} {team.name} has been deleted')
