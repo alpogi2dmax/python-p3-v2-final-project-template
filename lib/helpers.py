@@ -2,7 +2,13 @@ from models.team import Team
 from models.player import Player
 
 def exit_program():
-    print("Goodbye!")
+    print()
+    print("************************************************************************")
+    print()
+    print('Thank your visiting. Goodbye!')
+    print()
+    print("************************************************************************")
+    print()
     exit()
 
 def list_teams():

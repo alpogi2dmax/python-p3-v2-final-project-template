@@ -22,7 +22,7 @@ def main():
     while True:
         menu()
         choice = input("Enter Option: ")
-        if choice == "0":
+        if choice == "E" or choice == "e":
             exit_program()
         elif choice == "1":
             list_teams()
@@ -39,31 +39,32 @@ def main():
 
 def greetings():
     print()
-    print("****************************************")
+    print("************************************************************************")
     print()
     print("Welcome to the NBA Commissioner Database")
     print("As NBA Commissioner, you are tasked to maintain the NBA Teams and Roster")
     print()
-    print("****************************************")
+    print("************************************************************************")
 
 
 def menu():
     print()
     print('Main Menu')
-    print('************************')
+    print("************************************************************************")
     print("Please select an option:")
     print()
-    print("0. Exit the program")
     print("1. List all teams")
     print('2. Select team')
     print("3. Create a team")
+    print()
+    print("Select E or e to exit the program")
     print()
 
 def team(selected_team):
     while True:
         team_menu(selected_team)
         choice = input("Enter Option: ")
-        if choice == "0":
+        if choice == "<":
             break
         elif choice == "1":
             team_details(selected_team)
@@ -87,10 +88,9 @@ def team(selected_team):
 
 def team_menu(selected_team):
     print(f'{selected_team.name} Team Menu')
-    print("****************************************")
+    print("************************************************************************")
     print('Please select an option')
     print()
-    print('0: Go Back to main menu')
     print('1: Team details')
     print('2: Update team')
     print('3: Delete team')
@@ -98,12 +98,14 @@ def team_menu(selected_team):
     print('5: Select player')
     print('6: Draft player')
     print()
+    print("Select < to go back to the Main Menu")
+    print()
 
 def player(selected_player):
     while True:
         player_menu(selected_player)
         choice = input("Enter Option: ")
-        if choice == "0":
+        if choice == "<":
             break
         elif choice == "1":
             player_details(selected_player)
@@ -124,15 +126,16 @@ def player(selected_player):
 
 def player_menu(selected_player):
     print(f'{selected_player.name} Player Menu')
-    print("****************************************")
+    print("************************************************************************")
     print('Please select an option')
     print()
-    print('0: Go Back to team menu')
     print('1: Player details')
     print('2: Update player')
     print('3: Trade player')
     print('4: Negotiate salary')
     print('5: Waive player')
+    print()
+    print("Select < to go back to the Team Menu")
     print()
 
 if __name__ == "__main__":
