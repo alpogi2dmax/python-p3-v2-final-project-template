@@ -177,7 +177,6 @@ def update_player(player):
     player.name = new_name or player.name
     player.position = new_position or player.position
     player.salary = int(new_salary) if new_salary != '' else player.salary
-    player.team_id = player.team_id
     player.update()
     print()
     print("****************************************")
@@ -219,3 +218,10 @@ def trade_player(player):
     print()
     print(f'Traded {player.name} to the {teams[int(new_team_id)-1].name}')
     print()
+
+def waive_player(player):
+    team = Team.get_all()[player.team_id -1]
+    player.delete()
+    print()
+    print(f'{player.name} has been waived')
+    list_players(team)
