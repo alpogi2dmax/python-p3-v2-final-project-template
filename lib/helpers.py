@@ -74,17 +74,24 @@ def update_team(team):
         print("No team selected for update.")
         return
     
-    print(f'Updating {team.city} {team.name}')
+    print()
+    print(f'Updating {team.city} {team.name} details')
+    print()
     new_name = input("Enter new name: ")
     new_city = input("Enter new city: ")
-    new_salary_cap = int(input("Enter new salary cap: "))
 
     # Update the team with new data if provided
-    team.name = new_name
-    team.city = new_city
+    team.name = new_name or team.name
+    team.city = new_city or team.city
     team.update()
 
+    print()
+    print("****************************************")
+    print()
     print(f'Team updated to {team.city} {team.name}')
+    print()
+    print("****************************************")
+    print()
 
 def delete_team(team):
     team.delete()
@@ -118,7 +125,6 @@ def select_player(team):
     try:
         id_ = int(input("Enter the player's number: "))
         print()
-        
         if 1 <= id_ <= len(roster):
             return roster[id_ - 1]
         else:
