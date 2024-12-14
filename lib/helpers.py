@@ -205,34 +205,35 @@ def update_player(player):
 def negotiate_salary(player):
     rosters = Player.get_all()
     team_salaries = sum([roster.salary for roster in rosters if roster.team_id == player.team_id])
+    team_salary_cap = Team.get_all()[player.team_id -1].salary_cap
     if not player:
         print("No player selected for update.")
         return
-    
     print()
     print(f"Negotiating {player.name}'s salary")
     print()
-    print('Current Salary: {player.salary}')
+    print(f"Current Salary: ${player.salary:,d}")
+    print(f"Remaining Salary Allocation: ${(team_salary_cap - team_salaries):,d}")
+    print()
 
     new_salary = input("Enter proposed salary: ")
 
     # Update the player with new data if provided
-    if team_salaries + new_salary > Team.get_all()[player.team_id -1]:
+    if team_salaries + int(new_salary) > Team.get_all()[player.team_id -1].salary_cap:
+        print()
         print('Salaries will exceed salary cap. Please review salary allocation.')
+        print()
     else:
         player.salary = int(new_salary) if new_salary != '' else player.salary
         player.update()
         print()
         print("****************************************")
         print()
-        print(f'Updated {player.name} details')
+        print(f"Negotiated {player.name}'s details")
         print()
         print("****************************************")
         print()
-        print('Player Details')
-        print()
-        print(f'Name: {player.name}')
-        print(f'Position: {player.position}')
+        print(f"{player.name}'s new salary: ${player.salary:,d}")
         print()
         print("****************************************")
         print()

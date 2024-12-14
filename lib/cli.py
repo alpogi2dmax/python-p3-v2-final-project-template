@@ -112,10 +112,9 @@ def player(selected_player):
         elif choice == "3":
             trade_player(selected_player)
             break
-        elif choice == "5":
+        elif choice == "4":
             negotiate_salary(selected_player)
-            break
-        elif choice == "6":
+        elif choice == "5":
             waive_player(selected_player)
             break
         else:
