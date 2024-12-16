@@ -134,19 +134,18 @@ def list_players(team):
     print()
     print("************************************************************************")
     print()
+    return players
 
 def select_player(team):
     # change id_ to id
-    players = Player.get_all()
-    list_players(team)
-    roster = [player for player in players if player.team_id == team.id]
-    if len(roster) == 0:
+    players = list_players(team)
+    if len(players) == 0:
         return
     try:
-        id_ = int(input("Enter the player's number: "))
+        id = int(input("Enter the player's number: "))
         print()
-        if 1 <= id_ <= len(roster):
-            return roster[id_ - 1]
+        if 1 <= id <= len(players):
+            return players[id - 1]
         else:
             print("Player not found.")
     except ValueError:
