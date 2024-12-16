@@ -27,11 +27,11 @@ def list_teams():
 def select_team():
     teams = list_teams()
     print()
-    id_ = int(input("Enter the team's number: "))
+    id = int(input("Enter the team's number: "))
     print()
     try:
-        if 1 <= (id_) <= len(teams):
-            team = teams[(id_) - 1]
+        if 1 <= (id) <= len(teams):
+            team = teams[(id) - 1]
             if team:
                 print(f'You have the selected the {team.city} {team.name}')
                 print()
@@ -63,8 +63,8 @@ def create_team():
         print('Error creating team: ', exc)
 
 def team_details(team):
-    players = Player.get_all()
-    team_salaries = sum([player.salary for player in players if player.team_id == team.id])
+    players = team.players()
+    team_salaries = sum([player.salary for player in players])
     print("************************************************************************")
     print()
     print('Team Details')
@@ -102,9 +102,8 @@ def update_team(team):
     print()
 
 def delete_team(team):
-    players = Player.get_all()
-    roster = [player for player in players if player.team_id == team.id]
-    if len(roster) > 0:
+    players = team.players()
+    if len(players) > 0:
         print()
         print("************************************************************************")
         print()
@@ -153,8 +152,8 @@ def select_player(team):
     return None
 
 def draft_player(team):
-    players = Player.get_all()
-    team_salaries = sum([player.salary for player in players if player.team_id == team.id])
+    players = team.players()
+    team_salaries = sum([player.salary for player in players])
     print()
     print('Enter Player Details')
     print()
