@@ -22,16 +22,16 @@ def list_teams():
         print(f'{i+1}: {team.city} {team.name}')
     print()
     print("************************************************************************")
+    return teams
 
 def select_team():
-    teams = Team.get_all()
-    list_teams()
+    teams = list_teams()
+    print()
+    id_ = int(input("Enter the team's number: "))
     print()
     try:
-        id_ = int(input("Enter the team's number: "))
-        print()
-        if 1 <= id_ <= len(teams):
-            team = Team.find_by_id(id_)
+        if 1 <= (id_) <= len(teams):
+            team = teams[(id_) - 1]
             if team:
                 print(f'You have the selected the {team.city} {team.name}')
                 print()
@@ -40,8 +40,8 @@ def select_team():
                 print("Team not found.")
         else:
             print("Invalid team number.")
-    except ValueError:
-        print("Please enter a valid number.")
+    except Exception as exc:
+        print('Error creating team: ', exc)
     return None
 
 def create_team():
@@ -118,23 +118,25 @@ def delete_team(team):
         list_teams()
 
 def list_players(team):
-    players = Player.get_all()
+    players = team.players()
+    # players = Player.get_all()
     print()
     print("************************************************************************")
     print()
     print(f'{team.city} {team.name} Roster')
     print()
-    roster = [player for player in players if player.team_id == team.id]
-    if len(roster) == 0:
+    # roster = [player for player in players if player.team_id == team.id]
+    if len(players) == 0:
         print(f"There are no players in the {team.name}'s roster. Please add players.")
     else:
-        for i, player in enumerate(roster):
+        for i, player in enumerate(players):
             print(f'{i+1}: {player.name}')
     print()
     print("************************************************************************")
     print()
 
 def select_player(team):
+    # change id_ to id
     players = Player.get_all()
     list_players(team)
     roster = [player for player in players if player.team_id == team.id]
